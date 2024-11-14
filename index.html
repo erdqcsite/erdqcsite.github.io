@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>erdqc.github.io</title>
+    <link rel="icon" href="https://media.discordapp.net/attachments/1275822977136721930/1292561501571383367/Windows_Installer_icon.png?ex=67042f34&is=6702ddb4&hm=5d484e40fdfeb532ff3223abf44a783b752381ba75a051d136e8d39952179bb2&=&format=webp&quality=lossless" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            background-color: #000000;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .container {
+            background-color: #000000;
+            padding: 20px 30px;
+            text-align: center;
+            max-width: 80%;
+            position: relative;
+            z-index: 1;
+            border-radius: 20px;
+            border: 6px solid #FFFFFF;
+            opacity: 1;
+        }
+        h1 {
+            font-family: 'Inter', sans-serif;
+            font-size: 2.5em;
+            margin: 0;
+            color: #fff;
+        }
+        p {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.2em;
+            margin: 5px 0;
+            color: #ddd;
+        }
+        .button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-family: 'Inter', sans-serif;
+            font-size: 1.2em;
+            width: 220px;
+            height: 70px;
+            margin: 10px;
+            box-sizing: border-box;
+            transition: background-color 0.3s;
+            opacity: 1;
+            border: 4px solid #FFFFFF;
+        }
+        .discord {
+            background-color: #5865F2;
+            color: #FFFFFF;
+        }
+        .instagram {
+            background: linear-gradient(135deg, #4564dc, #aa2cc0, #ec0075, #ff6903, #ffd366);
+            color: #FFFFFF;
+        }
+        .icon {
+            width: 30px;
+            height: auto;
+            margin-right: 10px;
+        }
+        .time-button {
+            cursor: pointer;
+            color: #ddd;
+            font-size: 1.2em;
+        }
+        .presence-embed {
+            border-radius: 20px;
+            width: 340px; /* Restored to original size */
+            height: 192px;
+            margin-bottom: 20px;
+            border: none; /* Removed border */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Discord Presence Embed (iframe) -->
+        <iframe
+            title="Discord user embed"
+            width="340"
+            height="192"
+            frameborder="0"
+            sandbox="allow-scripts"
+            src="https://widgets.vendicated.dev/user?id=1066293478365089792&theme=dark&banner=true&full-banner=true&rounded-corners=true&discord-icon=true&badges=true&guess-nitro=true&"
+            class="presence-embed"
+        ></iframe>
+
+        <div class="main-content">
+            <h1>erdqc 👨‍💻</h1>
+
+            <p>loves tech</p>
+            <p id="current-time" class="time-button" onclick="window.open('https://time.is/', '_blank')">
+                Loading time...
+            </p>
+
+            <div style="display: flex; justify-content: center; width: 100%;">
+                <a href="https://discord.gg/AffrBjs8h7" class="button discord">
+                    <img src="https://static-00.iconduck.com/assets.00/discord-icon-2048x1570-y371emu6.png" class="icon">Discord
+                </a>
+                <a href="https://www.instagram.com/erdqc00/" class="button instagram">
+                    <img src="https://i.imgur.com/oyRmIH7.png" class="icon">Instagram
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function updateTime() {
+            const now = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true };
+            document.getElementById('current-time').textContent = now.toLocaleString('en-US', options);
+        }
+
+        setInterval(updateTime, 1000);
+        updateTime();
+    </script>
+</body>
+</html>
