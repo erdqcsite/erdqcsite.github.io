@@ -105,9 +105,26 @@
             width: 30px;
             height: auto;
         }
+
+        .computer-info {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            font-size: 1em;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 5px 10px;
+            border-radius: 10px;
+            z-index: 10;
+        }
     </style>
 </head>
 <body>
+
+    <div class="computer-info" id="computer-info">
+        Loading computer info...
+    </div>
 
     <div class="container">
         <!-- Replaced Imgur Embed with GIF -->
@@ -153,8 +170,18 @@
             document.getElementById('current-time').textContent = now.toLocaleString('en-US', options);
         }
 
+        function getComputerInfo() {
+            const userAgent = navigator.userAgent;
+            const platform = navigator.platform;
+            const screenResolution = `${window.screen.width}x${window.screen.height}`;
+            const browser = userAgent.match(/(firefox|msie|chrome|safari|opera|edge)/i) ? userAgent.match(/(firefox|msie|chrome|safari|opera|edge)/i)[0] : 'Unknown';
+            const os = platform.includes("Win") ? "Windows" : platform.includes("Mac") ? "MacOS" : platform.includes("Linux") ? "Linux" : "Unknown OS";
+            document.getElementById('computer-info').textContent = `OS: ${os} | Browser: ${browser} | Resolution: ${screenResolution}`;
+        }
+
         setInterval(updateTime, 1000);
         updateTime();
+        getComputerInfo();  // Set initial computer info
     </script>
 </body>
 </html>
