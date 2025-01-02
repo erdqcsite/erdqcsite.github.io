@@ -117,6 +117,12 @@
             padding: 5px 10px;
             border-radius: 10px;
             z-index: 10;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .computer-info div {
+            margin-bottom: 5px;
         }
     </style>
 </head>
@@ -170,13 +176,35 @@
             document.getElementById('current-time').textContent = now.toLocaleString('en-US', options);
         }
 
+        function getWindowsVersion() {
+            const userAgent = navigator.userAgent;
+            if (userAgent.indexOf("Windows NT 10.0") !== -1) {
+                return "Windows 10";
+            } else if (userAgent.indexOf("Windows NT 6.2") !== -1) {
+                return "Windows 8";
+            } else if (userAgent.indexOf("Windows NT 6.1") !== -1) {
+                return "Windows 7";
+            } else if (userAgent.indexOf("Windows NT 6.0") !== -1) {
+                return "Windows Vista";
+            } else if (userAgent.indexOf("Windows NT 5.1") !== -1) {
+                return "Windows XP";
+            } else if (userAgent.indexOf("Windows NT 5.0") !== -1) {
+                return "Windows 2000";
+            }
+            return "Unknown Windows Version";
+        }
+
         function getComputerInfo() {
             const userAgent = navigator.userAgent;
             const platform = navigator.platform;
             const screenResolution = `${window.screen.width}x${window.screen.height}`;
             const browser = userAgent.match(/(firefox|msie|chrome|safari|opera|edge)/i) ? userAgent.match(/(firefox|msie|chrome|safari|opera|edge)/i)[0] : 'Unknown';
-            const os = platform.includes("Win") ? "Windows" : platform.includes("Mac") ? "MacOS" : platform.includes("Linux") ? "Linux" : "Unknown OS";
-            document.getElementById('computer-info').textContent = `OS: ${os} | Browser: ${browser} | Resolution: ${screenResolution}`;
+            const os = platform.includes("Win") ? `Windows (${getWindowsVersion()})` : platform.includes("Mac") ? "MacOS" : platform.includes("Linux") ? "Linux" : "Unknown OS";
+            document.getElementById('computer-info').innerHTML = `
+                <div>OS: ${os}</div>
+                <div>Browser: ${browser}</div>
+                <div>Resolution: ${screenResolution}</div>
+            `;
         }
 
         setInterval(updateTime, 1000);
