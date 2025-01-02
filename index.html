@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>erdqc's site</title> <!-- Updated tab text -->
-    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" type="image/png"> <!-- Updated favicon -->
+    <!-- Updated favicon to the new image -->
+    <link rel="icon" href="https://i.imgur.com/UOLoUXx.png" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
@@ -190,6 +191,8 @@
                 return "Windows XP";
             } else if (userAgent.indexOf("Windows NT 5.0") !== -1) {
                 return "Windows 2000";
+            } else if (userAgent.indexOf("Windows NT 10.1") !== -1) {
+                return "Windows 11"; // Added Windows 11 detection
             }
             return "Unknown Windows Version";
         }
